@@ -8,6 +8,6 @@ Route::get('/', function () {
     return view('admin.index');
 });
 Route::get('/position', function () {
-    return view('livewire.admin.position');
-});
+    return view('admin.position');
+}); 
 // END ROUTING ADMIN

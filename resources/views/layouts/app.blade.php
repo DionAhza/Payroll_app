@@ -13,6 +13,7 @@
             document.getElementById('sidebar').classList.toggle('-translate-x-full');
         }
     </script>
+    @livewireStyles
 </head>
 <body class="bg-gray-100">
 
@@ -65,6 +66,6 @@
     </div>
 
 </div>
-
+@livewireScripts
 </body>
 </html>

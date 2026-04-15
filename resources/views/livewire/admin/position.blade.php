@@ -8,11 +8,18 @@
   </div>
 
   <div class="mt-6 flex items-center justify-end gap-x-6">
-    <button type="button" class="text-sm/6 font-semibold text-black">Cancel</button>
-    <button type="submit" class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500" 
+    @if ($editCheck == false)
+        <button type="submit" class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500" 
    >Save</button>
+    @endif
+    
+    
   </div>
 </form>
+@if ($editCheck == true)
+         <button  class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500" 
+    >update</button>
+    @endif
 
 <hr class="w-full text-black ">
     
@@ -45,7 +52,17 @@
       <tr class="*:text-gray-900 *:first:font-medium">
         <td class="px-3 py-2 whitespace-nowrap">{{ $loop->iteration }}</td>
         <td class="px-3 py-2 whitespace-nowrap">{{ $item->name }}</td>
-        <td class="px-3 py-2 whitespace-nowrap"></td>
+        <td class="px-3 py-2 whitespace-nowrap">
+          <button class="bg-red-500 px-4 py-2 text-white" wire:click='destroy({{ $item->id }})'>Hapus</button>
+          @if ($editCheck == false)   
+          <button wire:click='edit({{ $item->id }})' class="bg-blue-500 px-4 py-2 text-white">Edit</button>
+          @endif
+          @if ($editCheck == true)
+              <button class="bg-blue-500 px-4 py-2 text-white" wire:click='clear()'>
+                clear
+              </button>
+          @endif
+        </td>
       </tr>
        @endforeach
     </tbody>

@@ -9,6 +9,8 @@ class Position extends Component
 {
 
     public $name;
+    public $editCheck = false;
+    public $idEdit;
 
     public function render()
     {
@@ -25,6 +27,25 @@ class Position extends Component
 
         ModelsPosition::create($validated);
         session()->flash('message','berhasil menambah data');
+    }
+
+    public function destroy($id){
+        $position = ModelsPosition::find($id);
+        $position->delete();
+        session()->flash('message','berhasil menghapus data');
+    }
+
+    public function edit($id){
+        $position = ModelsPosition::find($id);
+        $this->name = $position->name;
+        $this->idEdit = $position->id;
+        $this->editCheck = true;
+    }
+
+    public function clear(){
+        $this->name = '';
+        $this->idEdit = '';
+        $this->editCheck = false;
     }
 
 }

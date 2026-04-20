@@ -11,10 +11,11 @@ class Position extends Component
     public $name;
     public $editCheck = false;
     public $idEdit;
+    public $keyword;
 
     public function render()
     {
-        $positions = ModelsPosition::all();
+        $positions = ModelsPosition::where('name','like','%'. $this->keyword . '%')->get();
         return view('livewire.admin.position', compact('positions'));
     }
 
@@ -46,6 +47,17 @@ class Position extends Component
         $this->name = '';
         $this->idEdit = '';
         $this->editCheck = false;
+    }
+
+    public function update($id){
+        $validate = $this->validate([
+            'name'=>'required'
+        ]);
+
+        $position = ModelsPosition::find($id);
+        $position->update($validate);
+        session()->flash('message','berhasil update data');
+        $this->clear();
     }
 
 }

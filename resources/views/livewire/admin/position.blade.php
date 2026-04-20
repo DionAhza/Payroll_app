@@ -15,9 +15,9 @@
     
     
   </div>
-</form>
+</form> 
 @if ($editCheck == true)
-         <button  class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500" 
+         <button wire:click='update({{ $idEdit }})'  class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500" 
     >update</button>
     @endif
 
@@ -38,6 +38,9 @@
         @endif
 
 <div class="overflow-x-auto">
+
+  <input type="text" class="form-control w-30 px-4 py-2" placeholder="Input your keyword...." wire:model.live='keyword'>
+
   <table class="min-w-full divide-y-2 divide-gray-200">
     <thead class="ltr:text-left rtl:text-right">
       <tr class="*:font-medium *:text-gray-900">

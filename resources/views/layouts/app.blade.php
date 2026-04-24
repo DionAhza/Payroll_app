@@ -29,7 +29,7 @@
 
         <nav class="mt-6 space-y-2 px-4">
             <a href="#" class="block py-2 px-4 rounded-lg hover:bg-gray-700">🏠 Dashboard</a>
-            <a href="#" class="block py-2 px-4 rounded-lg hover:bg-gray-700">👤 Users</a>
+            <a href="/user" class="block py-2 px-4 rounded-lg hover:bg-gray-700">👤 Users</a>
             <a href="/position" class="block py-2 px-4 rounded-lg hover:bg-gray-700"> Position</a>
             <a href="/employee" class="block py-2 px-4 rounded-lg hover:bg-gray-700"> Employee</a>
             <a href="#" class="block py-2 px-4 rounded-lg hover:bg-gray-700"> Payroll</a>

@@ -13,4 +13,7 @@ Route::get('/position', function () {
 Route::get('/employee', function () {
     return view('admin.pegawai');
 }); 
+Route::get('/user',function(){
+    return view('admin.pengguna');
+});
 // END ROUTING ADMIN

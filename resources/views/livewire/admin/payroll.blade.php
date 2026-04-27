@@ -1,5 +1,5 @@
 <div class="p-6">
-    <h1 class="text-2xl font-semibold mb-6 text-gray-700">Halaman Pengguna</h1>
+    <h1 class="text-2xl font-semibold mb-6 text-gray-700">Halaman Payroll</h1>
     @if ($errors->any())
         @foreach ($errors->all() as $error)
             <ul>
@@ -11,25 +11,37 @@
         <div class="text-green-500 font-bold">{{ session('message') }}</div>
     @endif
     <form class="max-w-lg space-y-4" wire:submit.prevent='store'>
+
+        <div>
+            <label class="block text-sm font-medium text-gray-600 mb-1">Employee</label>
+            <select wire:model='employee_id' class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-400">
+                <option value="">--- Pilih Employee ---</option>
+                @foreach ($employees as $item)
+                    <option value="{{ $item->id }}">
+                        {{ $item->user->name }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
         <!-- User -->
         <div>
-            <label class="block text-sm font-medium text-gray-600 mb-1">name</label>
-           <input type="text" wire:model='name' class="w-full border border-gray-500 ">
+            <label class="block text-sm font-medium text-gray-600 mb-1">Period</label>
+           <input type="date" wire:model='period' class="w-full border border-gray-500 ">
         </div>
 
         <!-- Position -->
         <div>
-            <label class="block text-sm font-medium text-gray-600 mb-1">Email</label>
-           <input type="email" wire:model='email' class="w-full border border-gray-500">
+            <label class="block text-sm font-medium text-gray-600 mb-1">Allowance</label>
+           <input type="number" wire:model='allowance' class="w-full border border-gray-500">
         </div>
 
         <!-- Gaji -->
         <div>
-            <label class="block text-sm font-medium text-gray-600 mb-1">Password</label>
+            <label class="block text-sm font-medium text-gray-600 mb-1">Deduction</label>
             <input 
-               wire:model='password'
-                type="password" 
-                placeholder="Masukkan password"
+               wire:model='deduction'
+                type="number" 
+                placeholder="Masukkan deduction"
                 class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-400"
             >
         </div>
@@ -61,15 +73,17 @@
     <thead class="ltr:text-left rtl:text-right">
       <tr class="*:font-medium *:text-gray-900">
         <th class="px-3 py-2 whitespace-nowrap">#</th>
-        <th class="px-3 py-2 whitespace-nowrap">Username</th>
-        <th class="px-3 py-2 whitespace-nowrap">Email</th>
-        <th class="px-3 py-2 whitespace-nowrap">Password</th>
+        <th class="px-3 py-2 whitespace-nowrap">Employee name</th>
+        <th class="px-3 py-2 whitespace-nowrap">Period</th>
+        <th class="px-3 py-2 whitespace-nowrap">Allowance</th>
+        <th class="px-3 py-2 whitespace-nowrap">Deduction</th>
+        <th class="px-3 py-2 whitespace-nowrap">Net Salary</th>
         <th class="px-3 py-2 whitespace-nowrap">Action</th>
       </tr>
     </thead>
 
     <tbody class="divide-y divide-gray-200">
-        @foreach ($users as $item)
+        @foreach ($payrolls as $item)
       <tr class="*:text-gray-900 *:first:font-medium">
         <td class="px-3 py-2 whitespace-nowrap">{{ $loop->iteration }}</td>
         <td class="px-3 py-2 whitespace-nowrap">{{ $item->name }}</td>

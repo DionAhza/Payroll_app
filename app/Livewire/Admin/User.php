@@ -13,11 +13,13 @@ class User extends Component
     public $password;
     public $editCheck = false;
     public $idEdit;
+    public $keyword;
 
     public function render()
     {
-        $users = ModelsUser::all();
+        $users = ModelsUser::where('name','like','%'. $this->keyword.'%')->orWhere('email','like','%'. $this->keyword.'%')->get();
         return view('livewire.admin.user', compact('users'));
+        
     }
 
     public function store(){

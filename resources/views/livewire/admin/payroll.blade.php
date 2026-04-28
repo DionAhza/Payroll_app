@@ -86,10 +86,12 @@
         @foreach ($payrolls as $item)
       <tr class="*:text-gray-900 *:first:font-medium">
         <td class="px-3 py-2 whitespace-nowrap">{{ $loop->iteration }}</td>
-        <td class="px-3 py-2 whitespace-nowrap">{{ $item->name }}</td>
-        <td class="px-3 py-2 whitespace-nowrap">{{  $item->email }}</td>
-        <td class="px-3 py-2 whitespace-nowrap">{{  $item->password }}</td>
-        <td class="px-3 py-2 whitespace-nowrap">
+        <td class="px-3 py-2 whitespace-nowrap">{{ $item->employee->user->name }}</td>
+        <td class="px-3 py-2 whitespace-nowrap">{{  $item->period }}</td>
+        <td class="px-3 py-2 whitespace-nowrap">{{ number_format( $item->allowance) }}</td>
+        <td class="px-3 py-2 whitespace-nowrap">{{ number_format( $item->deduction) }}</td>
+        <td class="px-3 py-2 whitespace-nowrap">{{ number_format(  $item->net_salary) }}</td>
+        <td class="px-3 py-2 whitespace-nowrap"> 
           <button class="bg-red-500 px-4 py-2 text-white" wire:click='destroy({{ $item->id }})'>Hapus</button>
           @if ($editCheck == false)   
           <button wire:click='edit({{ $item->id }})' class="bg-blue-500 px-4 py-2 text-white">Edit</button>

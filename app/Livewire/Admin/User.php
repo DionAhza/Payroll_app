@@ -11,6 +11,7 @@ class User extends Component
     public $name;
     public $email;
     public $password;
+    public $role;
     public $editCheck = false;
     public $idEdit;
     public $keyword;
@@ -26,7 +27,8 @@ class User extends Component
         $validate = $this->validate([
             'name'=> 'required',
             'email'=> 'required|email',
-            'password' => 'required'
+            'password' => 'required',
+            'role'=>'required'
         ]);
 
         ModelsUser::create($validate);

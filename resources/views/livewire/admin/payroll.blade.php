@@ -75,6 +75,7 @@
         <th class="px-3 py-2 whitespace-nowrap">#</th>
         <th class="px-3 py-2 whitespace-nowrap">Employee name</th>
         <th class="px-3 py-2 whitespace-nowrap">Period</th>
+        <th class="px-3 py-2 whitespace-nowrap">Salary</th>
         <th class="px-3 py-2 whitespace-nowrap">Allowance</th>
         <th class="px-3 py-2 whitespace-nowrap">Deduction</th>
         <th class="px-3 py-2 whitespace-nowrap">Net Salary</th>
@@ -88,6 +89,7 @@
         <td class="px-3 py-2 whitespace-nowrap">{{ $loop->iteration }}</td>
         <td class="px-3 py-2 whitespace-nowrap">{{ $item->employee->user->name }}</td>
         <td class="px-3 py-2 whitespace-nowrap">{{  $item->period }}</td>
+        <td class="px-3 py-2 whitespace-nowrap">{{ number_format( $item->employee->salary) }}</td>
         <td class="px-3 py-2 whitespace-nowrap">{{ number_format( $item->allowance) }}</td>
         <td class="px-3 py-2 whitespace-nowrap">{{ number_format( $item->deduction) }}</td>
         <td class="px-3 py-2 whitespace-nowrap">{{ number_format(  $item->net_salary) }}</td>

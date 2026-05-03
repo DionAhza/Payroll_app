@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\auth\AuthController;
 use Illuminate\Support\Facades\Route;
 
-
+Route::get('/',[AuthController::class, 'login'])->name('login');
+Route::post('/action/login',[AuthController::class, 'actionLogin'])->name('action.login');
 // Routing admin
-Route::get('/', function () {
+Route::get('/admin', function () {
     return view('admin.index');
 });
 Route::get('/position', function () {

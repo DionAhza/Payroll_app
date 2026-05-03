@@ -23,7 +23,7 @@
            <input type="email" wire:model='email' class="w-full border border-gray-500">
         </div>
 
-        <!-- Gaji -->
+        <!-- password -->
         <div>
             <label class="block text-sm font-medium text-gray-600 mb-1">Password</label>
             <input 
@@ -33,7 +33,18 @@
                 class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-400"
             >
         </div>
-
+        <div>
+            <label class="block text-sm font-medium text-gray-600 mb-1">Role</label>
+            <select wire:model='role' class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-400">
+                <option value="">--- Pilih role ---</option>
+                    <option value="admin">
+                        Admin
+                    </option>
+                    <option value="user">
+                        User
+                    </option>
+            </select>
+        </div>
         <!-- Button -->
         <div>
             @if ($editCheck == false)
@@ -64,6 +75,7 @@
         <th class="px-3 py-2 whitespace-nowrap">Username</th>
         <th class="px-3 py-2 whitespace-nowrap">Email</th>
         <th class="px-3 py-2 whitespace-nowrap">Password</th>
+        <th class="px-3 py-2 whitespace-nowrap">Role</th>
         <th class="px-3 py-2 whitespace-nowrap">Action</th>
       </tr>
     </thead>
@@ -75,6 +87,7 @@
         <td class="px-3 py-2 whitespace-nowrap">{{ $item->name }}</td>
         <td class="px-3 py-2 whitespace-nowrap">{{  $item->email }}</td>
         <td class="px-3 py-2 whitespace-nowrap">{{  $item->password }}</td>
+        <td class="px-3 py-2 whitespace-nowrap">{{  $item->role }}</td>
         <td class="px-3 py-2 whitespace-nowrap">
           <button class="bg-red-500 px-4 py-2 text-white" wire:click='destroy({{ $item->id }})'>Hapus</button>
           @if ($editCheck == false)   
